@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2230"/>
+      <stop offset="100%" stop-color="#0d0f1a"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#g)"/>
+  <rect x="24" y="24" width="672" height="392" rx="18" fill="#12131a" stroke="#2a2d3a"/>
+  <g fill="#e2e8f0" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="20" font-weight="700">
+    <text x="50%" y="80" text-anchor="middle">Placeholder — Replace with exported screen</text>
+  </g>
+  <g fill="#94a3b8" font-size="14">
+    <text x="50%" y="110" text-anchor="middle">Save your PNG/JPG with the same filename to overwrite</text>
+  </g>
+  <g>
+    <rect x="60" y="160" width="180" height="240" rx="12" fill="#181b25" stroke="#2a2d3a"/>
+    <rect x="270" y="160" width="180" height="240" rx="12" fill="#181b25" stroke="#2a2d3a"/>
+    <rect x="480" y="160" width="180" height="240" rx="12" fill="#181b25" stroke="#2a2d3a"/>
+  </g>
+</svg>

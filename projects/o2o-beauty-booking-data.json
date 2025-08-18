@@ -1,0 +1,8 @@
+{
+  "metrics": {
+    "timeToBookDelta": -0.38,
+    "noShowDelta": -0.12,
+    "bookingConversionDelta": 0.18,
+    "rescheduleWithinPolicyDelta": 0.06
+  }
+}

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Watsons Academy O+O Beauty Booking — Case Study</title>
+    <meta name="description" content="UX case study: revamping the O+O (online + offline) beauty booking experience for Watsons Academy." />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="./o2o-beauty-booking-styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (window.mermaid) {
+          window.mermaid.initialize({ startOnLoad: true, theme: 'default' });
+        }
+
+        // Load metrics from data.json so you can easily update results without editing HTML
+        fetch('./o2o-beauty-booking-data.json')
+          .then(r => r.ok ? r.json() : null)
+          .then(data => {
+            if (!data || !data.metrics) return;
+            const m = data.metrics;
+            const fmt = v => `${v > 0 ? '+' : ''}${Math.round(v * 100)}%`;
+
+            const setText = (id, value) => {
+              const el = document.getElementById(id);
+              if (el) el.textContent = fmt(value);
+            };
+            setText('metric-timeToBook', m.timeToBookDelta);
+            setText('metric-noShow', m.noShowDelta);
+            setText('metric-bookingConversion', m.bookingConversionDelta);
+            setText('metric-reschedule', m.rescheduleWithinPolicyDelta);
+            const cardMap = {
+              'metric-timeToBook-card': m.timeToBookDelta,
+              'metric-bookingConversion-card': m.bookingConversionDelta,
+              'metric-noShow-card': m.noShowDelta,
+              'metric-reschedule': m.rescheduleWithinPolicyDelta,
+            };
+            Object.entries(cardMap).forEach(([id, val]) => {
+              const el = document.getElementById(id);
+              if (el) el.textContent = fmt(val);
+            });
+          })
+          .catch(() => {});
+
+        // Lightweight lightbox for gallery images
+        const lightbox = document.getElementById('lightbox');
+        const imgEl = lightbox?.querySelector('.lightbox__img');
+        const captionEl = lightbox?.querySelector('.lightbox__caption');
+        const closeBtn = lightbox?.querySelector('.lightbox__close');
+        const prevBtn = lightbox?.querySelector('.lightbox__nav.prev');
+        const nextBtn = lightbox?.querySelector('.lightbox__nav.next');
+        const figures = Array.from(document.querySelectorAll('[data-gallery] figure'));
+        let currentIndex = -1;
+
+        function openAt(index) {
+          const fig = figures[index];
+          if (!fig || !lightbox) return;
+          const img = fig.querySelector('img');
+          const full = img?.getAttribute('data-full') || img?.getAttribute('src');
+          imgEl.src = full;
+          imgEl.alt = img?.alt || '';
+          captionEl.textContent = fig.querySelector('figcaption')?.textContent || '';
+          lightbox.classList.add('open');
+          document.body.classList.add('no-scroll');
+          lightbox.setAttribute('aria-hidden', 'false');
+          currentIndex = index;
+        }
+
+        function close() {
+          if (!lightbox) return;
+          lightbox.classList.remove('open');
+          document.body.classList.remove('no-scroll');
+          lightbox.setAttribute('aria-hidden', 'true');
+          imgEl.src = '';
+        }
+
+        function show(delta) {
+          const next = (currentIndex + delta + figures.length) % figures.length;
+          openAt(next);
+        }
+
+        figures.forEach((fig, i) => {
+          const img = fig.querySelector('img');
+          img?.addEventListener('click', () => openAt(i));
+          img?.addEventListener('keydown', (e) => { if (e.key === 'Enter') openAt(i); });
+          img?.setAttribute('tabindex', '0');
+        });
+
+        closeBtn?.addEventListener('click', close);
+        imgEl?.addEventListener('click', close);
+        prevBtn?.addEventListener('click', () => show(-1));
+        nextBtn?.addEventListener('click', () => show(1));
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox?.classList.contains('open')) return;
+          if (e.key === 'Escape') close();
+          if (e.key === 'ArrowLeft') show(-1);
+          if (e.key === 'ArrowRight') show(1);
+        });
+
+        // Low‑key reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('in-view');
+          });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+      });
+    </script>
+  </head>
+  <body>
+    <a href="../index.html" class="back-button">← Back to Portfolio</a>
+    
+    <div id="lightbox" class="lightbox" aria-modal="true" role="dialog" aria-hidden="true">
+      <button class="lightbox__close" aria-label="Close">×</button>
+      <button class="lightbox__nav prev" aria-label="Previous">‹</button>
+      <img class="lightbox__img" alt="" />
+      <div class="lightbox__caption"></div>
+      <button class="lightbox__nav next" aria-label="Next">›</button>
+    </div>
+    <header class="hero">
+      <div class="container">
+        <h1>Revamping Watsons Academy O+O Beauty Booking</h1>
+        <p class="subtitle">From chat‑based inquiries to a self‑serve, cross‑channel booking experience with live availability, soft‑lock confidence, and in‑store QR check‑in.</p>
+        <div class="outcomes">
+          <div class="outcome"><span class="num" id="metric-timeToBook">−38%</span><span class="label">Time‑to‑book</span></div>
+          <div class="outcome"><span class="num" id="metric-noShow">−12%</span><span class="label">No‑shows</span></div>
+          <div class="outcome"><span class="num" id="metric-bookingConversion">+18%</span><span class="label">Booking conversion</span></div>
+        </div>
+        <p class="note">Figures shown are goals and pilot results for illustration. Replace with live data in <code>data.json</code>.</p>
+      </div>
+    </header>
+
+    <nav class="toc container" aria-label="On this page">
+      <a href="#overview">Overview</a>
+      <a href="#challenge">Challenge</a>
+      <a href="#market-research">Market Research</a>
+      <a href="#flow">Flow</a>
+      <a href="#blueprint">Service Blueprint</a>
+      <a href="#kpis">KPIs</a>
+      <a href="#new-design">New Design</a>
+      <a href="#reflection">Reflection</a>
+    </nav>
+
+    <main class="container">
+      <section id="overview" class="section" data-reveal>
+        <h2>📌 Project overview</h2>
+        <div class="grid two">
+          <div>
+            <h3>Problem</h3>
+            <p>The legacy experience relied on region buttons and WhatsApp chat to arrange beauty services. That created long lead times, uncertainty about real‑time availability, and a weak handoff to stores.</p>
+            <h3>Objective</h3>
+            <ul>
+              <li>Replace chat with a guided, self‑serve booking flow (service → location → artist → date).</li>
+              <li>Introduce <strong>live sloting + soft‑lock</strong> for trust and reduced double‑booking.</li>
+              <li>Strengthen O+O with <strong>QR check‑in</strong>, reminders, and policy transparency.</li>
+              <li>Connect beauty services to retail via AR tools and product recommendations.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Scope & role</h3>
+            <ul>
+              <li>Experience architecture, flows, wireframes, and visual design.</li>
+              <li>Service blueprint across app/web, booking API, store, and therapist app.</li>
+              <li>Content strategy for policy clarity and error recovery.</li>
+              <li>Metrics framework for time‑to‑book, conversion, and no‑shows.</li>
+            </ul>
+          </div>
+        </div>
+        
+      </section>
+
+      
+
+      <section id="challenge" class="section" data-reveal>
+        <h2>💪🏻 Challenge</h2>
+        <p class="muted">The AS‑IS experience relied on region buttons and chat‑based booking, which created friction and limited visibility into real‑time availability.</p>
+        <div class="gallery" data-gallery>
+          <figure>
+            <img src="../assets/images/o2o-as-is-layout.png" alt="AS‑IS Watsons beauty booking layout with region buttons and chat CTAs" data-full="../assets/images/o2o-as-is-layout.png" />
+            <figcaption>AS‑IS — Region‑based landing and WhatsApp CTAs led to manual coordination and drop‑offs.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="market-research" class="section" data-reveal>
+        <h2>🔎 Market research: beauty brand references</h2>
+        <p class="muted">I reviewed booking and service experiences from beauty leaders (e.g., Bobbi Brown, Chanel, Sephora, Charlotte Tilbury, Benefit Brow Bar) to inform Watsons' direction.</p>
+        <div class="grid two">
+          <div class="card">
+            <h3>UX considerations with brand signals</h3>
+            <ul class="bullets">
+              <li><strong>Personalization</strong> — Inspired by Bobbi Brown's 1:1 artistry and Chanel's beauty consultations: let users select preferred experts, service types, store, and time; save preferences and support a short pre‑visit questionnaire.</li>
+              <li><strong>Service clarity</strong> — Like Sephora's clear service menu and Charlotte Tilbury's "quick pro" offerings: use simple categories, duration, price, and add‑on visibility so users know exactly what they're booking.</li>
+              <li><strong>Seamless flow</strong> — Best‑in‑class flows minimize steps and uncertainty: keep the journey to 4–5 steps with a persistent progress bar, one confirmation screen, and timely reminders.</li>
+              <li><strong>Value‑added services</strong> — Chanel and Charlotte Tilbury blend education and retail: integrate AR try‑on, tailored product recommendations, and post‑booking follow‑ups (care tips, reorder links, rebook).</li>
+              <li><strong>Accessibility</strong> — Ensure inclusive sizing, color contrast, keyboard support, and descriptive labels; design for screen readers and reduced motion.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>UI considerations</h3>
+            <ul class="bullets">
+              <li><strong>Visual hierarchy</strong> — Borrowing from Chanel/Bobbi Brown: hero → categories → primary CTA; keep critical actions above the fold.</li>
+              <li><strong>Brand consistency</strong> — Maintain Watsons' color, type, and tone across O+O, aligning app, web, and in‑store materials.</li>
+              <li><strong>Theme choice</strong> — Light vs. dark changes mood; choose a palette that complements product imagery and improves readability.</li>
+              <li><strong>Imagery & iconography</strong> — Use high‑quality, inclusive visuals and simple, universal icons to clarify steps and policies.</li>
+              <li><strong>Mobile responsiveness</strong> — Optimize for touch: large targets, safe areas, sticky progress, and fast image loading.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <h3>Key takeaways for Watsons</h3>
+          <ul class="bullets">
+            <li>Prioritize a <strong>user‑centred, streamlined flow</strong> that makes availability trustworthy.</li>
+            <li>Offer <strong>personalized and value‑added</strong> services (AR try‑on, tailored product sets, follow‑ups).</li>
+            <li>Use a <strong>visually appealing, brand‑consistent</strong> interface with clear hierarchy.</li>
+            <li>Ensure <strong>accessibility and mobile optimization</strong> from the outset.</li>
+            <li>Leverage <strong>high‑quality imagery</strong> to inspire confidence and conversion.</li>
+          </ul>
+        </div>
+      </section>
+
+      
+
+      <section id="flow" class="section" data-reveal>
+        <h2>🧭 Experience flow</h2>
+        <ol class="steps">
+          <li><strong>Discover</strong>: Choose service → store → date with live slot preview.</li>
+          <li><strong>Build</strong>: Select add‑ons with duration and price auto‑recalculated.</li>
+          <li><strong>Commit</strong>: Slot is soft‑locked for 5 minutes with countdown; quick auth via OTP/FaceID.</li>
+          <li><strong>Confirm</strong>: Pay now or at store; get QR code, calendar event, and reminders.</li>
+          <li><strong>Manage</strong>: Reschedule/cancel within policy; changes propagate to therapist schedule.</li>
+          <li><strong>In‑store</strong>: Scan membership or QR to check in; status syncs to device.</li>
+        </ol>
+        <div class="before-after">
+          <div>
+            <h3>Before</h3>
+            <ul>
+              <li>Unclear slot reliability; double‑booking risk.</li>
+              <li>Add‑on impacts hidden until late.</li>
+              <li>Weak handoff between online and store.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>After</h3>
+            <ul>
+              <li>Real‑time slots + soft‑lock with countdown.</li>
+              <li>Transparent duration and pricing.</li>
+              <li>QR check‑in and live schedule sync.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="blueprint" class="section" data-reveal>
+        <h2>🗺️ Service blueprint</h2>
+        <p class="muted">Rendered with Mermaid. If the diagram does not load, see the <a href="./o2o-beauty-booking-blueprint.mmd" target="_blank" rel="noopener">diagram source</a>.</p>
+        <div class="diagram mermaid">
+sequenceDiagram
+    autonumber
+    participant U as Customer
+    participant M as Mobile/Web
+    participant B as Booking API
+    participant S as Store System
+    participant T as Therapist App
+
+    U->>M: Browse services
+    M->>B: Query services, prices, durations
+    B-->>M: Services + duration + add‑ons
+
+    U->>M: Choose store + date
+    M->>B: Request available slots (service, store, date)
+    B->>S: Check staff skills, room/equipment, business hours
+    B-->>M: Time slots
+
+    U->>M: Pick slot + add‑ons
+    M->>B: Hold slot (5‑min soft lock)
+    B->>S: Create tentative booking
+    S-->>B: Tentative OK
+    B-->>M: Hold token + countdown
+
+    alt New user
+        U->>M: Sign up / quick guest flow
+    else Member
+        U->>M: Sign in (FaceID/OTP)
+    end
+
+    U->>M: Confirm + pay (wallet/card/at store)
+    M->>B: Confirm booking + payment intent
+    B->>S: Finalize appointment
+    B->>T: Notify therapist schedule
+    B-->>M: Confirmation + QR code
+
+    Note over U,M: Email/SMS/push reminders
+
+    U->>M: Reschedule/cancel
+    M->>B: Modify booking
+    B->>S: Update staff/room allocation
+    T-->>B: Acknowledge change
+    B-->>M: Updated confirmation
+
+    par Walk‑in at store
+        U->>S: Scan membership / QR
+        S->>B: Fetch upcoming booking / create walk‑in
+        B->>M: Sync state to device
+    and No‑show handling
+        S->>B: Mark no‑show / apply policy
+        B->>M: Notify user + fee rules
+    end
+        </div>
+      </section>
+
+      <section id="kpis" class="section" data-reveal>
+        <h2>📈 KPI dashboard (design targets)</h2>
+        <div class="kpis">
+          <div class="card">
+            <h4>Time‑to‑book</h4>
+            <div class="metric"><span class="delta good" id="metric-timeToBook-card">−38%</span></div>
+            <p class="muted">Median time from service select → confirmation</p>
+          </div>
+          <div class="card">
+            <h4>Booking conversion</h4>
+            <div class="metric"><span class="delta good" id="metric-bookingConversion-card">+18%</span></div>
+            <p class="muted">Holds that convert to confirmed</p>
+          </div>
+          <div class="card">
+            <h4>No‑show rate</h4>
+            <div class="metric"><span class="delta good" id="metric-noShow-card">−12%</span></div>
+            <p class="muted">With reminders + policy clarity</p>
+          </div>
+          <div class="card">
+            <h4>Reschedule within policy</h4>
+            <div class="metric"><span class="delta neutral" id="metric-reschedule">+6%</span></div>
+            <p class="muted">Users self‑serve vs. calling store</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="wireframe" class="section" data-reveal>
+        <h2>🧱 Wireframe</h2>
+        <p class="muted">Early structural exploration to align steps, reduce cognitive load, and validate the IA before visual design. Open the full prototype in Figma below.</p>
+        <div class="gallery" data-gallery>
+          <figure>
+            <a href="https://www.figma.com/design/VzN2vSaNmcHD2PwLUuCyTm/Revamp-on-Watsons-O-O-booking-system-of-beauty-service?node-id=15-36513&t=cfWjVfQXUlm852NV-1" target="_blank" rel="noopener">
+              <img src="../assets/images/o2o-watsons-academy-wireframe.png" alt="Wireframe overview of the revamped Watsons beauty booking flow" data-full="../assets/images/o2o-watsons-academy-wireframe.png" />
+            </a>
+            <figcaption>Wireframe — Click to view the source in Figma (opens in a new tab).</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="new-design" class="section" data-reveal>
+        <h2>✨ New Design</h2>
+        <div class="gallery" data-gallery>
+          <figure>
+            <img src="../assets/images/o2o-to-be.png" alt="Final new design overview" data-full="../assets/images/o2o-to-be.png" />
+            <figcaption>Overview of the redesigned experience — click to view full screen.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      
+
+      <section id="final-design" class="section" data-reveal>
+        <h2>🌟 Final design</h2>
+        <p>I didn't just redesign the look — I redesigned the feeling. That's what this new design does.</p>
+        <div class="grid two">
+          <div class="callout">
+            <h3 class="chip-red">Colour Tone</h3>
+            <p>The use of a dark background with vibrant accents (pink, purple, mint green) creates a modern, sophisticated aesthetic. The contrast improves readability and draws attention to key elements like service categories and CTAs. The palette aligns with beauty trends, evoking luxury and care, while maintaining accessibility.</p>
+          </div>
+          <div class="callout">
+            <h3 class="chip-red">Patterns & Imagery</h3>
+            <p>High‑quality images of beauty products, tools, and models add emotional resonance. Soft‑edged shapes and circular motifs (e.g., eye‑makeup and eyebrow sections) make the layout feel inviting and approachable—ideal for a beauty‑focused platform.</p>
+          </div>
+          <div class="callout">
+            <h3 class="chip-red">Arrangement & Hierarchy</h3>
+            <p>Vertical stacking of sections (Beauty Service → Beauty Class → Professional Beauty Service) builds a clear information hierarchy from general to specific. New modules—blog, beauty profile, AI product recommendation—appear near the end so they're discoverable without distracting from the primary booking flow.</p>
+          </div>
+          <div class="callout">
+            <h3 class="chip-red">Flow, trust, and transparency</h3>
+            <ul class="bullets">
+              <li>Shifted from region chat CTAs to an <strong>in‑site multi‑step flow</strong> (service → location → artist → date) with a <strong>progress header</strong>.</li>
+              <li>Added <strong>real‑time slotting</strong> with a <strong>soft‑lock countdown</strong> to prevent double‑booking and reduce anxiety.</li>
+              <li>Made <strong>duration and price</strong> recalculation visible when add‑ons change; enabled <strong>back‑to‑back multi‑service</strong> booking with buffers.</li>
+              <li>Clarified <strong>cancellation/no‑show policy</strong> inline pre‑confirm and added <strong>QR check‑in</strong> for O+O handoff.</li>
+              <li>Integrated <strong>Watsons AR beauty tools</strong> and a structured results UI to connect services with retail.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:16px;">
+            <h3 class="chip-pp">New Features Rationale</h3>
+            <ul class="bullets">
+              <li><strong>Blog Session</strong> — Educational content builds trust and engagement; tips and trends encourage deeper exploration.</li>
+              <li><strong>Interactive AR & AI Tools</strong> — Personalized try‑ons and saved preferences increase retention and make the journey fun and tailored.</li>
+              <li><strong>AI Product Recommendation</strong> — Suggests products based on needs or history, streamlining decisions and boosting attach rates.</li>
+              <li><strong>Typography and Spacing</strong> — Clean, legible fonts and generous spacing reduce cognitive load for faster decisions.</li>
+              <li><strong>Call‑to‑Action (CTA)</strong> — Consistent placement and contrasting "galaxy" styling keeps next actions obvious.</li>
+            </ul>
+            <div class="gallery gallery--compact" data-gallery>
+              <figure>
+                <img src="../assets/images/o2o-blog-section.png" alt="Blog section UI" data-full="../assets/images/o2o-blog-section.png" />
+                <figcaption>Blog Session</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/images/o2o-ar-tools.png" alt="AR and AI tools UI" data-full="../assets/images/o2o-ar-tools.png" />
+                <figcaption>Interactive AR & AI Tools</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/images/o2o-ai-pdt-recomd.png" alt="AI product recommendation UI" data-full="../assets/images/o2o-ai-pdt-recomd.png" />
+                <figcaption>AI Product Recommendation</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/images/o2o-typography-spacing.png" alt="Typography and spacing UI" data-full="../assets/images/o2o-typography-spacing.png" />
+                <figcaption>Typography & Spacing</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/images/o2o-cta-button.png" alt="CTA button styling" data-full="../assets/images/o2o-cta-button.png" />
+                <figcaption>CTA button</figcaption>
+              </figure>
+            </div>
+        </div>
+        </div>
+        <div class="cta-wrap" data-reveal>
+          <a class="btn-glass" href="https://www.figma.com/design/VzN2vSaNmcHD2PwLUuCyTm/Revamp-on-Watsons-O-O-booking-system-of-beauty-service?node-id=15-15202&t=m90ZIWbPVw4zwVqI-1" target="_blank" rel="noopener">View full design — app, web, mobile web</a>
+        </div>
+        <blockquote class="callout" style="margin-top:16px;">
+          <p>🫢 "Woah, never thought Watsons has beauty service like this!" — friend's first reaction</p>
+          <p><strong>This is how design turns into business value:</strong> aesthetics + clarity + personalization reduce friction, increase discovery, and drive conversion.</p>
+        </blockquote>
+      </section>
+ 
+      <section id="reflection" class="section" data-reveal>
+        <h2>💭 Reflection</h2>
+        <ul class="bullets">
+          <li><strong>Complex bookings</strong> — Support for back‑to‑back multi‑service bundles and built‑in buffer times simplified planning and reduced staff hand‑offs.</li>
+          <li><strong>Group scenarios</strong> — Two‑person bookings with synchronized slots balanced availability and store capacity.</li>
+          <li><strong>Policy transparency</strong> — Late arrival and no‑show rules were surfaced inline to prevent surprises and reduce disputes.</li>
+          <li><strong>Offline tolerance</strong> — Preserved selections and safe retries ensured progress wasn't lost during weak connections.</li>
+          <li><strong>Accessibility</strong> — Larger tap targets, keyboard navigation, and reduced motion options made the flow more inclusive.</li>
+        </ul>
+        <p class="muted">Next explorations: group bookings beyond two people, deeper loyalty integration, and in‑store queue visibility.</p>
+      </section>
+ 
+      
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Designed by <strong>Sharon Ng</strong>. Case study assets © for portfolio demonstration.</p>
+      </div>
+    </footer>
+  </body>
+</html>

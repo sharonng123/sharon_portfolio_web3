@@ -1,0 +1,51 @@
+sequenceDiagram
+    autonumber
+    participant U as Customer
+    participant M as Mobile/Web
+    participant B as Booking API
+    participant S as Store System
+    participant T as Therapist App
+
+    U->>M: Browse services
+    M->>B: Query services, prices, durations
+    B-->>M: Services + duration + add‑ons
+
+    U->>M: Choose store + date
+    M->>B: Request available slots (service, store, date)
+    B->>S: Check staff skills, room/equipment, business hours
+    B-->>M: Time slots
+
+    U->>M: Pick slot + add‑ons
+    M->>B: Hold slot (5‑min soft lock)
+    B->>S: Create tentative booking
+    S-->>B: Tentative OK
+    B-->>M: Hold token + countdown
+
+    alt New user
+        U->>M: Sign up / quick guest flow
+    else Member
+        U->>M: Sign in (FaceID/OTP)
+    end
+
+    U->>M: Confirm + pay (wallet/card/at store)
+    M->>B: Confirm booking + payment intent
+    B->>S: Finalize appointment
+    B->>T: Notify therapist schedule
+    B-->>M: Confirmation + QR code
+
+    Note over U,M: Email/SMS/push reminders
+
+    U->>M: Reschedule/cancel
+    M->>B: Modify booking
+    B->>S: Update staff/room allocation
+    T-->>B: Acknowledge change
+    B-->>M: Updated confirmation
+
+    par Walk‑in at store
+        U->>S: Scan membership / QR
+        S->>B: Fetch upcoming booking / create walk‑in
+        B->>M: Sync state to device
+    and No‑show handling
+        S->>B: Mark no‑show / apply policy
+        B->>M: Notify user + fee rules
+    end
