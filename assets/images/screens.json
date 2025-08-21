@@ -1,8 +1,0 @@
-{
-  "screens": [
-    { "id": "before-flow", "file": "before-flow.svg", "alt": "Before: fragmented booking flow", "caption": "Before — fragmented selection and unclear progress" },
-    { "id": "after-flow",  "file": "after-flow.svg",  "alt": "After: guided booking flow",      "caption": "After — guided steps, soft‑lock, transparent pricing" },
-    { "id": "before-slot", "file": "before-slot.svg", "alt": "Before: static time slot list",    "caption": "Before — static slot list" },
-    { "id": "after-slot",  "file": "after-slot.svg",  "alt": "After: dynamic slot list",        "caption": "After — live availability with block grouping" }
-  ]
-}

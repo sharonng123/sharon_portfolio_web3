@@ -110,7 +110,7 @@
     </script>
   </head>
   <body>
-    <a href="../index.html" class="back-button">← Back to Portfolio</a>
+    <a href="../index.html#projects" class="back-button">← Back to Portfolio</a>
     
     <div id="lightbox" class="lightbox" aria-modal="true" role="dialog" aria-hidden="true">
       <button class="lightbox__close" aria-label="Close">×</button>
@@ -123,6 +123,15 @@
       <div class="container">
         <h1>Revamping Watsons Academy O+O Beauty Booking</h1>
         <p class="subtitle">From chat‑based inquiries to a self‑serve, cross‑channel booking experience with live availability, soft‑lock confidence, and in‑store QR check‑in.</p>
+        <div class="hero-tags">
+          <span class="tag">O2O Experience</span>
+          <span class="tag">Service Design</span>
+          <span class="tag">Booking Systems</span>
+          <span class="tag">UX Research</span>
+          <span class="tag">Mobile Design</span>
+          <span class="tag">Web Design</span>
+          <span class="tag">UI Design</span>
+        </div>
         <div class="outcomes">
           <div class="outcome"><span class="num" id="metric-timeToBook">−38%</span><span class="label">Time‑to‑book</span></div>
           <div class="outcome"><span class="num" id="metric-noShow">−12%</span><span class="label">No‑shows</span></div>
@@ -136,8 +145,8 @@
       <a href="#overview">Overview</a>
       <a href="#challenge">Challenge</a>
       <a href="#market-research">Market Research</a>
-      <a href="#flow">Flow</a>
       <a href="#blueprint">Service Blueprint</a>
+      <a href="#flow">Flow</a>
       <a href="#kpis">KPIs</a>
       <a href="#new-design">New Design</a>
       <a href="#reflection">Reflection</a>
@@ -149,22 +158,25 @@
         <div class="grid two">
           <div>
             <h3>Problem</h3>
-            <p>The legacy experience relied on region buttons and WhatsApp chat to arrange beauty services. That created long lead times, uncertainty about real‑time availability, and a weak handoff to stores.</p>
+            <p>Watsons' in-store beauty service booking experience relied on region buttons and WhatsApp chat to arrange beauty services. This created low awareness of in-store services, high no-show rates, and limited engagement with Watsons' beauty expertise and product offerings.</p>
             <h3>Objective</h3>
             <ul>
-              <li>Replace chat with a guided, self‑serve booking flow (service → location → artist → date).</li>
-              <li>Introduce <strong>live sloting + soft‑lock</strong> for trust and reduced double‑booking.</li>
-              <li>Strengthen O+O with <strong>QR check‑in</strong>, reminders, and policy transparency.</li>
-              <li>Connect beauty services to retail via AR tools and product recommendations.</li>
+              <li><strong>Replace chat with a guided, self-serve booking flow</strong> (service → location → artist → date).</li>
+              <li><strong>Engage new users</strong> through redesigned page layout and improved user experience.</li>
+              <li><strong>Introduce in-store services</strong> with clear service descriptions, benefits, and booking flows.</li>
+              <li><strong>Invite participation</strong> in beauty services through compelling content and seamless booking experience.</li>
+              <li><strong>Provide beauty education</strong> with skincare information, tips, and expert guidance.</li>
+              <li><strong>Reduce no-show rates</strong> through better communication, reminders, and policy transparency.</li>
             </ul>
           </div>
           <div>
-            <h3>Scope & role</h3>
+            <h3>My role</h3>
             <ul>
-              <li>Experience architecture, flows, wireframes, and visual design.</li>
-              <li>Service blueprint across app/web, booking API, store, and therapist app.</li>
-              <li>Content strategy for policy clarity and error recovery.</li>
-              <li>Metrics framework for time‑to‑book, conversion, and no‑shows.</li>
+              <li><strong>Page redesign</strong> - Complete visual and UX overhaul to improve engagement and service discovery.</li>
+              <li><strong>User engagement strategy</strong> - Design flows to attract and convert new users to in-store services.</li>
+              <li><strong>Service introduction</strong> - Create clear, compelling presentations of beauty services and their benefits.</li>
+              <li><strong>Educational content design</strong> - Structure beauty and skincare information for easy consumption and trust-building.</li>
+              <li><strong>No-show reduction</strong> - Implement booking confirmation, reminder systems, and clear policy communication.</li>
             </ul>
           </div>
         </div>
@@ -178,7 +190,7 @@
         <p class="muted">The AS‑IS experience relied on region buttons and chat‑based booking, which created friction and limited visibility into real‑time availability.</p>
         <div class="gallery" data-gallery>
           <figure>
-            <img src="../assets/images/o2o-as-is-layout.png" alt="AS‑IS Watsons beauty booking layout with region buttons and chat CTAs" data-full="../assets/images/o2o-as-is-layout.png" />
+            <img src="../assets/images/o2o-beauty-booking/o2o-as-is-layout.png" alt="AS‑IS Watsons beauty booking layout with region buttons and chat CTAs" data-full="../assets/images/o2o-beauty-booking/o2o-as-is-layout.png" />
             <figcaption>AS‑IS — Region‑based landing and WhatsApp CTAs led to manual coordination and drop‑offs.</figcaption>
           </figure>
         </div>
@@ -222,36 +234,6 @@
       </section>
 
       
-
-      <section id="flow" class="section" data-reveal>
-        <h2>🧭 Experience flow</h2>
-        <ol class="steps">
-          <li><strong>Discover</strong>: Choose service → store → date with live slot preview.</li>
-          <li><strong>Build</strong>: Select add‑ons with duration and price auto‑recalculated.</li>
-          <li><strong>Commit</strong>: Slot is soft‑locked for 5 minutes with countdown; quick auth via OTP/FaceID.</li>
-          <li><strong>Confirm</strong>: Pay now or at store; get QR code, calendar event, and reminders.</li>
-          <li><strong>Manage</strong>: Reschedule/cancel within policy; changes propagate to therapist schedule.</li>
-          <li><strong>In‑store</strong>: Scan membership or QR to check in; status syncs to device.</li>
-        </ol>
-        <div class="before-after">
-          <div>
-            <h3>Before</h3>
-            <ul>
-              <li>Unclear slot reliability; double‑booking risk.</li>
-              <li>Add‑on impacts hidden until late.</li>
-              <li>Weak handoff between online and store.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>After</h3>
-            <ul>
-              <li>Real‑time slots + soft‑lock with countdown.</li>
-              <li>Transparent duration and pricing.</li>
-              <li>QR check‑in and live schedule sync.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
 
       <section id="blueprint" class="section" data-reveal>
         <h2>🗺️ Service blueprint</h2>
@@ -311,6 +293,36 @@ sequenceDiagram
         </div>
       </section>
 
+      <section id="flow" class="section" data-reveal>
+        <h2>🧭 Experience flow</h2>
+        <ol class="steps">
+          <li><strong>Discover</strong>: Choose service → store → date with live slot preview.</li>
+          <li><strong>Build</strong>: Select add‑ons with duration and price auto‑recalculated.</li>
+          <li><strong>Commit</strong>: Slot is soft‑locked for 5 minutes with countdown; quick auth via OTP/FaceID.</li>
+          <li><strong>Confirm</strong>: Pay now or at store; get QR code, calendar event, and reminders.</li>
+          <li><strong>Manage</strong>: Reschedule/cancel within policy; changes propagate to therapist schedule.</li>
+          <li><strong>In‑store</strong>: Scan membership or QR to check in; status syncs to device.</li>
+        </ol>
+        <div class="before-after">
+          <div>
+            <h3>Before</h3>
+            <ul>
+              <li>Unclear slot reliability; double‑booking risk.</li>
+              <li>Add‑on impacts hidden until late.</li>
+              <li>Weak handoff between online and store.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>After</h3>
+            <ul>
+              <li>Real‑time slots + soft‑lock with countdown.</li>
+              <li>Transparent duration and pricing.</li>
+              <li>QR check‑in and live schedule sync.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section id="kpis" class="section" data-reveal>
         <h2>📈 KPI dashboard (design targets)</h2>
         <div class="kpis">
@@ -343,7 +355,7 @@ sequenceDiagram
         <div class="gallery" data-gallery>
           <figure>
             <a href="https://www.figma.com/design/VzN2vSaNmcHD2PwLUuCyTm/Revamp-on-Watsons-O-O-booking-system-of-beauty-service?node-id=15-36513&t=cfWjVfQXUlm852NV-1" target="_blank" rel="noopener">
-              <img src="../assets/images/o2o-watsons-academy-wireframe.png" alt="Wireframe overview of the revamped Watsons beauty booking flow" data-full="../assets/images/o2o-watsons-academy-wireframe.png" />
+              <img src="../assets/images/o2o-beauty-booking/o2o-watsons-academy-wireframe.png" alt="Wireframe overview of the revamped Watsons beauty booking flow" data-full="../assets/images/o2o-beauty-booking/o2o-watsons-academy-wireframe.png" />
             </a>
             <figcaption>Wireframe — Click to view the source in Figma (opens in a new tab).</figcaption>
           </figure>
@@ -354,7 +366,7 @@ sequenceDiagram
         <h2>✨ New Design</h2>
         <div class="gallery" data-gallery>
           <figure>
-            <img src="../assets/images/o2o-to-be.png" alt="Final new design overview" data-full="../assets/images/o2o-to-be.png" />
+            <img src="../assets/images/o2o-beauty-booking/o2o-to-be.png" alt="Final new design overview" data-full="../assets/images/o2o-beauty-booking/o2o-to-be.png" />
             <figcaption>Overview of the redesigned experience — click to view full screen.</figcaption>
           </figure>
         </div>
@@ -400,23 +412,23 @@ sequenceDiagram
             </ul>
             <div class="gallery gallery--compact" data-gallery>
               <figure>
-                <img src="../assets/images/o2o-blog-section.png" alt="Blog section UI" data-full="../assets/images/o2o-blog-section.png" />
+                <img src="../assets/images/o2o-beauty-booking/o2o-blog-section.png" alt="Blog section UI" data-full="../assets/images/o2o-beauty-booking/o2o-blog-section.png" />
                 <figcaption>Blog Session</figcaption>
               </figure>
               <figure>
-                <img src="../assets/images/o2o-ar-tools.png" alt="AR and AI tools UI" data-full="../assets/images/o2o-ar-tools.png" />
+                <img src="../assets/images/o2o-beauty-booking/o2o-ar-tools.png" alt="AR and AI tools UI" data-full="../assets/images/o2o-beauty-booking/o2o-ar-tools.png" />
                 <figcaption>Interactive AR & AI Tools</figcaption>
               </figure>
               <figure>
-                <img src="../assets/images/o2o-ai-pdt-recomd.png" alt="AI product recommendation UI" data-full="../assets/images/o2o-ai-pdt-recomd.png" />
+                <img src="../assets/images/o2o-beauty-booking/o2o-ai-pdt-recomd.png" alt="AI product recommendation UI" data-full="../assets/images/o2o-beauty-booking/o2o-ai-pdt-recomd.png" />
                 <figcaption>AI Product Recommendation</figcaption>
               </figure>
               <figure>
-                <img src="../assets/images/o2o-typography-spacing.png" alt="Typography and spacing UI" data-full="../assets/images/o2o-typography-spacing.png" />
+                <img src="../assets/images/o2o-beauty-booking/o2o-typography-spacing.png" alt="Typography and spacing UI" data-full="../assets/images/o2o-beauty-booking/o2o-typography-spacing.png" />
                 <figcaption>Typography & Spacing</figcaption>
               </figure>
               <figure>
-                <img src="../assets/images/o2o-cta-button.png" alt="CTA button styling" data-full="../assets/images/o2o-cta-button.png" />
+                <img src="../assets/images/o2o-beauty-booking/o2o-cta-button.png" alt="CTA button styling" data-full="../assets/images/o2o-beauty-booking/o2o-cta-button.png" />
                 <figcaption>CTA button</figcaption>
               </figure>
             </div>
