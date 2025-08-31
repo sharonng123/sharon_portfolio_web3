@@ -19,7 +19,9 @@
     .company { color: var(--accent-pink); font-weight: 600; }
     .date { color: var(--text-muted); font-size: 14px; }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-2); }
+    .skills-comprehensive { display: flex; flex-direction: column; gap: var(--space-3); }
     .skill-category { background: var(--glass); padding: var(--space-2); border-radius: var(--radius-md); }
+    .skills-comprehensive .skill-category strong { color: #FFB3D1; font-weight: 600; margin-bottom: var(--space-1); display: block; }
     
     /* Mobile responsive styles */
     @media (max-width: 768px) {
@@ -84,6 +86,7 @@
         font-size: 16px;
         display: block;
         margin-bottom: var(--space-2);
+        color: var(--accent-pink);
       }
       
       .skill-category .bullets li {
@@ -282,55 +285,60 @@
       </section>
 
       <section class="resume-section">
-        <h3>Skills & Tools</h3>
-        <div class="skills-grid">
+        <h3>Skills</h3>
+        <div class="skills-comprehensive">
           <div class="skill-category">
-            <strong>Skills</strong>
-            <ul class="bullets">
-              <li>Prototyping</li>
-              <li>User Research</li>
-              <li>Editing</li>
-              <li>Branding</li>
-              <li>Account Management</li>
-              <li>Social Media Strategy</li>
-              <li>Online Advertising</li>
-              <li>Vibe Coding</li>
-              <li>Illustration</li>
-              <li>Graphic Design</li>
-            </ul>
+            <strong>Software:</strong>
+            <p>Design: Sketch, Figma, XD, Balsamiq, Illustrator, Photoshop</p>
+            <p>Prototyping & Interaction: Axure RP, Miro</p>
+            <p>User Research & Analytics: Hotjar, Mixpanel, UXcam</p>
+            <p>Project Management & Collaboration: Confluence, Jira, Zeplin</p>
+            <p>Others: Generative AI tools, Cursor, SEO, HTML, CSS, JavaScript, Midjourney</p>
           </div>
+          
           <div class="skill-category">
-            <strong>Tools</strong>
-            <ul class="bullets">
-              <li>Figma</li>
-              <li>Adobe Creative Suite (Illustrator, Photoshop, XD)</li>
-              <li>Cursor, GPT-4, DeepSeek, Grok</li>
-              <li>Jira, WordPress, Wix</li>
-              <li>Canva, Midjourney, Motiff</li>
-              <li>Hotjar, UXCAM</li>
-              <li>Google Data Studio</li>
-              <li>Final Cut Pro</li>
-              <li>Microsoft Word, PowerPoint, Excel</li>
-            </ul>
+            <strong>Design Methodologies:</strong>
+            <p>Human-Centered Design, User-Centered Design, Design Thinking, Activity-Focused design, Data-Driven Design, Service Design, Google Design Sprint, Double Diamond, Design System</p>
           </div>
+          
           <div class="skill-category">
-            <strong>Languages</strong>
-            <ul class="bullets">
-              <li>Native in Cantonese</li>
-              <li>Fluent in English</li>
-              <li>Fluent in Mandarin</li>
-            </ul>
+            <strong>Design Skills:</strong>
+            <p>UX/UI Design, Responsive Web & App Design, Interaction Design, Prototyping, Visual Communication</p>
           </div>
+          
           <div class="skill-category">
-            <strong>Interests</strong>
-            <ul class="bullets">
-              <li>Drawing & Painting</li>
-              <li>Travel</li>
-              <li>Dancing</li>
-              <li>Gaming, Movie</li>
-              <li>Hiking</li>
-              <li>Cooking</li>
-            </ul>
+            <strong>Research & Analysis:</strong>
+            <p>Qualitative Research, Quantitative Research, User Research & Analysis, Persona, User Journey, User Scenario, Empathy Map, Card sorting</p>
+          </div>
+          
+          <div class="skill-category">
+            <strong>Testing & Validation:</strong>
+            <p>Hypothesis & Verification, Usability Testing, A/B Testing, Think-aloud protocols</p>
+          </div>
+          
+          <div class="skill-category">
+            <strong>Product Management & Strategy:</strong>
+            <p>Product Management, Social media strategy, Digital Strategy, Account management</p>
+          </div>
+          
+          <div class="skill-category">
+            <strong>Structure & Processes:</strong>
+            <p>Information Architecture, Sitemap, Wireframing, User Flow</p>
+          </div>
+          
+          <div class="skill-category">
+            <strong>Other Skills:</strong>
+            <p>Graphic Design, Vibe Coding, Branding, Story Mapping, Presentation, Storytelling, Online Advertising</p>
+          </div>
+          
+          <div class="skill-category">
+            <strong>Abilities:</strong>
+            <p>Communication, Collaboration, Empathy, Problem Solving, Creativity, Adaptability, Attention to Detail, Time Management, Logical Thinking, Curiosity, Perceptiveness, Passion for Learning & Knowledge Sharing</p>
+          </div>
+          
+          <div class="skill-category">
+            <strong>Languages:</strong>
+            <p>Native in Cantonese, Fluent in English, Fluent in Mandarin</p>
           </div>
         </div>
       </section>
