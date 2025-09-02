@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sharon Tsang - Web3 UI/UX Designer Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: white;
+      font-size: 10pt;
+    }
+
+    .resume-container {
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.4in;
+      background: white;
+      min-height: 11in;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 0.6rem;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 0.5rem;
+    }
+
+    .name {
+      font-size: 24pt;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.2rem;
+    }
+
+    .title {
+      font-size: 14pt;
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-info {
+      font-size: 9pt;
+      color: #4b5563;
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-info span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .section {
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #667eea;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.2rem;
+    }
+
+    .summary {
+      font-size: 10pt;
+      line-height: 1.5;
+      color: #374151;
+      margin-bottom: 0.4rem;
+    }
+
+    .experience-item {
+      margin-bottom: 0.3rem;
+      page-break-inside: avoid;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.3rem;
+    }
+
+    .job-title {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .company {
+      font-size: 10pt;
+      color: #667eea;
+      font-weight: 500;
+    }
+
+    .date {
+      font-size: 9pt;
+      color: #6b7280;
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .achievements {
+      list-style: none;
+      margin-top: 0.3rem;
+    }
+
+    .achievements li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.2rem;
+      font-size: 9pt;
+      line-height: 1.3;
+    }
+
+    .achievements li:before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .skill-category {
+      background: #f8fafc;
+      padding: 0.4rem;
+      border-radius: 6px;
+      border-left: 3px solid #667eea;
+    }
+
+    .skill-category-title {
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.25rem;
+      font-size: 9.5pt;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      display: inline-block;
+      background: white;
+      padding: 0.15rem 0.3rem;
+      margin: 0.08rem;
+      border-radius: 3px;
+      font-size: 8pt;
+      border: 1px solid #e5e7eb;
+    }
+
+    .education-item {
+      margin-bottom: 0.4rem;
+    }
+
+    .degree {
+      font-weight: 600;
+      color: #1a1a1a;
+      font-size: 10pt;
+    }
+
+    .school {
+      color: #667eea;
+      font-weight: 500;
+    }
+
+    .key-projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+
+    .project-item {
+      background: #f8fafc;
+      padding: 0.3rem;
+      border-radius: 6px;
+      border-left: 3px solid #ec4899;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-title {
+      font-weight: 600;
+      color: #1a1a1a;
+      font-size: 10pt;
+      margin-bottom: 0.2rem;
+    }
+
+    .project-desc {
+      font-size: 9pt;
+      color: #4b5563;
+      margin-bottom: 0.2rem;
+    }
+
+    .project-tags {
+      font-size: 8pt;
+      color: #667eea;
+      font-weight: 500;
+    }
+
+    .highlight {
+      background: #fef3c7;
+      padding: 0.125rem 0.25rem;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    .crypto-highlight {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 0.125rem 0.25rem;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    .web3-section {
+      background: linear-gradient(135deg, #f0f4ff, #ffffff);
+      padding: 0.4rem;
+      border-radius: 6px;
+      border: 1px solid #e0e7ff;
+      margin-bottom: 0.4rem;
+    }
+
+    .journey-item {
+      margin-bottom: 0.25rem;
+      padding: 0.25rem;
+      background: white;
+      border-radius: 4px;
+      border-left: 2px solid #667eea;
+    }
+
+    .journey-year {
+      font-weight: 600;
+      color: #667eea;
+      font-size: 9pt;
+    }
+
+    .journey-title {
+      font-weight: 600;
+      color: #1a1a1a;
+      font-size: 9.5pt;
+      margin-bottom: 0.2rem;
+    }
+
+    .journey-desc {
+      font-size: 8pt;
+      color: #4b5563;
+      line-height: 1.2;
+    }
+
+    @media print {
+      @page {
+        margin: 0;
+        size: A4;
+      }
+      body { 
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        margin: 0;
+        padding: 0;
+      }
+      .resume-container {
+        padding: 0.4in;
+        box-shadow: none;
+        margin: 0;
+      }
+      .page-break {
+        page-break-before: always;
+        margin-top: 1.5rem;
+      }
+      section[style*="page-break-before: always"] {
+        margin-top: 1.5rem !important;
+        padding-top: 0.5rem;
+      }
+      .section {
+        margin-bottom: 0.6rem !important;
+      }
+      .section-title {
+        margin-bottom: 0.4rem !important;
+        padding-bottom: 0.2rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+    <header class="header">
+      <h1 class="name">Ng Man Shan (Sharon)</h1>
+      <div class="title">UI/UX Designer • Web3 & Blockchain Enthusiast</div>
+      <div class="contact-info">
+        <span>📧 shannms423@gmail.com</span>
+        <span>📱 +852 5311 8503</span>
+        <span>📍 Hong Kong, China</span>
+        <span>🌐 https://sharonng123.github.io/sharon_portfolio_web3/</span>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2 class="section-title">Professional Summary</h2>
+      <p class="summary">
+        <strong>UI/UX Designer transitioning to Web3</strong> with <span class="highlight">3+ years designing for 10M+ users</span> across e-commerce, AI systems, and digital payment platforms. <span class="crypto-highlight">Passionate crypto user since 2022</span> with hands-on experience in DeFi, NFTs, and wallet UX. Proven track record of simplifying complex systems—from NFT digital campaign, global e-commerce to blockchain transactions. My unique combination of <span class="highlight">user psychology background, cross-cultural research expertise (28+ interviews across Asia)</span>, and personal crypto journey positions me to design intuitive Web3 experiences that bridge the gap between complex blockchain technology and mainstream adoption.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Web3 & Crypto Experience</h2>
+      <div class="web3-section">
+        <p style="font-size: 9pt; line-height: 1.3; margin-bottom: 0.2rem;"><strong>2022:</strong> Led NFT gamification at K11, used MetaMask, bought Sandbox Land, designed voxel NFTs</p>
+        <p style="font-size: 9pt; line-height: 1.3; margin-bottom: 0.2rem;"><strong>2023-24:</strong> P2P trading, Uniswap, OpenSea navigation, experienced DeFi pain points firsthand</p>
+        <p style="font-size: 9pt; line-height: 1.3; margin-bottom: 0.2rem;"><strong>2024-25:</strong> CeFi staking/bridging on OSL, AI tools integration (GPT-4, Cursor) for design workflows</p>
+        <p style="font-size: 9pt; line-height: 1.3;"><strong>2025:</strong> Self-initiated Web3 wallet comparison UX study (MetaMask, Coinbase, Trust Wallet)</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Professional Experience</h2>
+      
+      <div class="experience-item">
+        <div class="job-header">
+          <div>
+            <div class="job-title">UX & Design Specialist</div>
+            <div class="company">AS Watson Group (Watsons) • Asia's Largest Health & Beauty Retailer</div>
+          </div>
+          <div class="date">Oct 2023 — Present</div>
+        </div>
+        <ul class="achievements">
+          <li>Led end-to-end UX/UI design for <span class="highlight">AI-powered search, AR beauty try-on, and gamified campaigns</span> serving 10M+ users</li>
+          <li>Conducted <span class="highlight">cross-regional UX research across Thailand & Malaysia</span> (28+ interviews), optimizing strategies based on cultural insights</li>
+          <li>Pioneered <span class="highlight">Watsons Academy booking system</span> and brand consistency initiatives across digital touchpoints</li>
+          <li>Designed data-informed interfaces balancing user needs with business objectives, driving measurable engagement improvements</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Digital Content Designer</div>
+            <div class="company">MTR Corporation Limited • Hong Kong's Mass Transit System</div>
+          </div>
+          <div class="date">Aug 2022 — Oct 2023</div>
+        </div>
+        <ul class="achievements">
+          <li>Created <span class="highlight">300+ digital assets</span> achieving <span class="highlight">25% follower growth</span> across Facebook, Instagram, and YouTube</li>
+          <li>Led integrated campaigns and content strategies driving engagement, awareness, and measurable business outcomes</li>
+          <li>Identified market opportunities and formulated e-marketing initiatives generating sales and brand awareness</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Digital Marketing Officer</div>
+            <div class="company">K11 Concepts Limited • Luxury Retail & Cultural Hub</div>
+          </div>
+          <div class="date">Jan 2022 — Aug 2022</div>
+        </div>
+        <ul class="achievements">
+          <li>Led <span class="highlight">"Spot the Avatar" NFT gamification campaign</span> bridging digital collectibles with luxury retail experiences</li>
+          <li>Managed metavision tours and NFT campaigns, partnering with luxury brands (Gucci, Nike, Rosewood)</li>
+          <li>Developed graphics and campaign materials for K11 MUSEA app across multiple digital touchpoints</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Key Projects & Web3 Applications</h2>
+      <div class="key-projects">
+        <div class="project-item">
+          <div class="project-title">Web3 Wallet Comparison UX Study (2025)</div>
+          <div class="project-desc">Self-initiated research comparing MetaMask, Coinbase, and Trust Wallet onboarding flows</div>
+        </div>
+        <div class="project-item">
+          <div class="project-title">Watsons AI Search Enhancement (2024)</div>
+          <div class="project-desc">Complex system design for 10M+ users with methodology applicable to DeFi interfaces</div>
+        </div>
+        <div class="project-item">
+          <div class="project-title">K11 NFT Gamification Campaign (2022)</div>
+          <div class="project-desc">Interactive Web3 experience achieving 40% engagement increase</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="page-break-before: always; margin-top: 1.5rem;">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-category-title">🎨 UX/UI Design</div>
+          <ul class="skill-list">
+            <li>User Research</li>
+            <li>User Journey Mapping</li>
+            <li>Information Architecture</li>
+            <li>Wireframing & Prototyping</li>
+            <li>Usability Testing</li>
+            <li>Design Systems</li>
+            <li>Complex System Design</li>
+            <li>Cross-Cultural UX</li>
+            <li>Accessibility Design</li>
+            <li>A/B Testing</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">🔗 Web3 & Blockchain</div>
+          <ul class="skill-list">
+            <li>Wallet UX Design</li>
+            <li>DeFi User Experience</li>
+            <li>NFT Marketplace Design</li>
+            <li>Crypto Onboarding</li>
+            <li>Transaction Flow Design</li>
+            <li>Trust & Security UX</li>
+            <li>Blockchain User Research</li>
+            <li>Web3 Community Building</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">🛠️ Tools & Technologies</div>
+          <ul class="skill-list">
+            <li>Figma</li>
+            <li>Adobe Creative Suite</li>
+            <li>Cursor & AI Tools</li>
+            <li>Hotjar & UXCAM</li>
+            <li>Google Data Studio</li>
+            <li>MetaMask</li>
+            <li>Uniswap</li>
+            <li>OpenSea</li>
+            <li>OSL Platform</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">💼 Business & Finance</div>
+          <ul class="skill-list">
+            <li>Financial UX Design</li>
+            <li>E-commerce Optimization</li>
+            <li>Conversion Rate Optimization</li>
+            <li>Data-Driven Design</li>
+            <li>Cross-Regional Research</li>
+            <li>Stakeholder Management</li>
+            <li>ROI-Focused Design</li>
+            <li>Risk Communication</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Education & Certifications</h2>
+      <div class="education-item">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <div class="degree">Bachelor of Social Science</div>
+          <div class="date">Sep 2019 — Oct 2021</div>
+        </div>
+        <div class="school">City University of Hong Kong</div>
+        <div style="font-size: 9pt; color: #6b7280;">Major: Asian and International Studies • Minor: Human Resource Management</div>
+        <div style="font-size: 8.5pt; color: #667eea; font-style: italic;">*Cross-cultural studies background valuable for global crypto adoption</div>
+      </div>
+      <div class="education-item">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <div class="degree">Google UX Design Professional Certificate</div>
+          <div class="date">2023</div>
+        </div>
+        <div class="school">Coursera</div>
+      </div>
+      <div class="education-item">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <div class="degree">Adobe UI/UX Web Design Professional Certificate</div>
+          <div class="date">2022</div>
+        </div>
+        <div class="school">Authorized Adobe Training</div>
+      </div>
+    </section>
+
+          <section class="section">
+        <h2 class="section-title">Why I'm fit for Web3/Finance</h2>
+        <ul class="achievements">
+          <li><strong>Authentic User Perspective:</strong> Personally experienced major crypto UX pain points—gas fees, failed transactions, wallet confusion</li>
+          <li><strong>Rapid Adaptation:</strong> Self-taught designer who transitioned from social science to tech, now diving deep into Web3 patterns</li>
+          <li><strong>Cultural Bridge Builder:</strong> Cross-regional research experience for both crypto natives and mainstream adoption</li>
+          <li><strong>Financial UX Understanding:</strong> Experience with traditional e-commerce and emerging CeFi/DeFi platforms</li>
+          <li><strong>Growth Mindset:</strong> Actively learning and passionate about solving crypto accessibility through better design</li>
+        </ul>
+      </section>
+
+    <section class="section">
+      <h2 class="section-title">Languages</h2>
+      <div style="display: flex; gap: 1.5rem; font-size: 10pt;">
+        <span><strong>Native:</strong> Cantonese</span>
+        <span><strong>Fluent:</strong> English, Mandarin</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
