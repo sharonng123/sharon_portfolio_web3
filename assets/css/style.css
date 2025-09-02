@@ -624,6 +624,138 @@ body::after {
   aspect-ratio: 4/5;
 }
 
+/* Social Media Section */
+.social-media-section {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--glass-border);
+}
+
+.social-media-section h3 {
+  color: var(--text-strong);
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-h3);
+}
+
+.social-media-section p {
+  color: var(--text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.social-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.social-media-brand {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.social-media-brand:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.social-media-brand h4 {
+  color: var(--text-strong);
+  margin-bottom: var(--space-3);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon svg {
+  width: 24px;
+  height: 24px;
+  z-index: 2;
+  position: relative;
+}
+
+.social-icon.instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+}
+
+.social-icon.facebook {
+  background: #1877f2;
+  color: white;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon.instagram:hover {
+  box-shadow: 0 8px 25px rgba(240, 148, 51, 0.4);
+}
+
+.social-icon.facebook:hover {
+  box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+}
+
+/* Add subtle animation */
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.social-icon:hover::before {
+  left: 100%;
+}
+
+/* Responsive adjustments for social media */
+@media (max-width: 768px) {
+  .social-media-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .social-icons {
+    gap: var(--space-4);
+  }
+  
+  .social-icon {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .social-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
 /* MTR Graphics - Square format for social media */
 .mtr-gallery .gallery-item {
   aspect-ratio: 1/1;

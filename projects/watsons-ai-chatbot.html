@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watsons AI Chatbot Enhancement - UX Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .metrics-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section {
+            background: white;
+            margin: 40px 0;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #f0f0f0;
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            margin-right: 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .problem-statement {
+            background: linear-gradient(135deg, #58D1FD, #D5B4FF, #FFADE8);
+            color: black;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .problem-statement h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .problem-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .problem-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .problem-list li::before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .research-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .research-card h4 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .design-principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .principle {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #f0f0f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .principle:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .principle-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .result-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .learnings-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .learnings-list li {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .learnings-list li::before {
+            content: "💡";
+            position: absolute;
+            left: 20px;
+            font-size: 1.5rem;
+        }
+
+        .image-placeholder {
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            color: #666;
+            margin: 30px 0;
+            font-style: italic;
+        }
+
+        /* Back Button Styles */
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 40px 20px;
+            }
+            
+            .metrics-bar {
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .back-button {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .flowchart-container {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .flowchart-step {
+            background: white;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            min-width: 200px;
+        }
+
+        .flowchart-arrow {
+            font-size: 2rem;
+            color: #667eea;
+            margin: 10px 0;
+        }
+
+        .competitor-analysis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .competitor-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #f0f0f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .competitor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .competitor-card h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .pain-point-card {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+
+        .pain-point-card h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .solution-highlight {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .solution-highlight h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="../index.html#projects" class="back-button">← Back to Portfolio</a>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero fade-in">
+            <h1>Watsons AI Chatbot Enhancement</h1>
+            <p class="subtitle">Transforming Customer Support Through Intelligent Order Management</p>
+            <div class="hero-tags">
+                <span class="tag">AI Chatbot</span>
+                <span class="tag">Customer Support</span>
+                <span class="tag">Order Management</span>
+                <span class="tag">UX Research</span>
+                <span class="tag">Conversation Design</span>
+                <span class="tag">E-commerce</span>
+            </div>
+            <div class="metrics-bar">
+                <div class="metric">
+                    <span class="metric-value">24/7</span>
+                    <span class="metric-label">Availability</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">65%</span>
+                    <span class="metric-label">Resolution Rate Target</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">40%</span>
+                    <span class="metric-label">Faster Response Time</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">3</span>
+                    <span class="metric-label">Markets (HK, TH, MY)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Challenge Section -->
+        <div class="section fade-in">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div>
+                    <h2 class="section-title">The Challenge: When Customers Can't Get Answers</h2>
+                    <p class="section-subtitle">Enhancing Watsons' chatbot to handle complex order-related inquiries</p>
+                </div>
+            </div>
+            
+            <p>At Watsons, our existing chatbot could handle basic FAQs, but customers were frustrated when trying to get help with order-related issues. This created a bottleneck in customer service and led to longer wait times for human agents.</p>
+            
+            <div class="problem-statement">
+                <h3>The Problem Statement:</h3>
+                <ul class="problem-list">
+                    <li>Customers couldn't get real-time order status updates through chat</li>
+                    <li>Delivery inquiries required human agent intervention</li>
+                    <li>Order cancellation and return processes were unclear and manual</li>
+                    <li>Long waiting times during peak hours affected customer satisfaction</li>
+                </ul>
+            </div>
+
+            <div class="solution-highlight">
+                <h3>Project Goals:</h3>
+                <ul>
+                    <li><strong>Streamline Web and App customer chat experience</strong> across all touchpoints</li>
+                    <li><strong>Shorten waiting time</strong> with 24/7 AI-powered support</li>
+                    <li><strong>Increase chatbot resolution rate</strong> for order-related inquiries</li>
+                    <li><strong>Reduce human agent workload</strong> by handling routine order questions</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Research & Pain Points Section -->
+        <div class="section fade-in">
+            <div class="section-header">
+                <div class="section-icon">🔍</div>
+                <div>
+                    <h2 class="section-title">Research: Identifying Customer Pain Points</h2>
+                    <p class="section-subtitle">Understanding the gaps in our current chatbot experience</p>
+                </div>
+            </div>
+
+            <p style="font-size: 1.1rem; color: #555; margin-bottom: 40px; line-height: 1.7;">Through customer support ticket analysis and user feedback, I identified the most common frustrations with our existing chatbot system.</p>
+
+            <div class="research-grid">
+                <div class="pain-point-card">
+                    <h4>🚚 Delivery Confusion</h4>
+                    <ul>
+                        <li><strong>No Real-time Updates:</strong> Customers couldn't track their orders through chat</li>
+                        <li><strong>Delivery Window Uncertainty:</strong> Unclear about when orders would arrive</li>
+                        <li><strong>Address Change Issues:</strong> Couldn't modify delivery details after ordering</li>
+                    </ul>
+                </div>
+                
+                <div class="pain-point-card">
+                    <h4>❌ Cancellation Frustration</h4>
+                    <ul>
+                        <li><strong>Complex Process:</strong> Multi-step cancellation wasn't clear</li>
+                        <li><strong>Time Sensitivity:</strong> Customers unsure about cancellation deadlines</li>
+                        <li><strong>Refund Confusion:</strong> Unclear about refund timelines and methods</li>
+                    </ul>
+                </div>
+                
+                <div class="pain-point-card">
+                    <h4>🔄 Return & Refund Issues</h4>
+                    <ul>
+                        <li><strong>Policy Complexity:</strong> Return conditions weren't easily accessible</li>
+                        <li><strong>Process Ambiguity:</strong> Steps for returns weren't clearly explained</li>
+                        <li><strong>Status Tracking:</strong> No visibility into return processing status</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                [Customer Support Ticket Analysis Dashboard - showing top inquiry categories and resolution times]
+            </div>
+        </div>
+
+        <!-- Competitive Research Section -->
+        <div class="section fade-in">
+            <div class="section-header">
+                <div class="section-icon">🏆</div>
+                <div>
+                    <h2 class="section-title">Competitive Research: AI Chatbot Benchmarking</h2>
+                    <p class="section-subtitle">Analyzing AI chatbot capabilities across e-commerce platforms</p>
+                </div>
+            </div>
+
+            <p style="font-size: 1.1rem; color: #555; margin-bottom: 40px; line-height: 1.7;">I conducted in-depth research on AI chatbot implementations from Lazada, Cider, Sephora, and Amazon to understand current market standards and identify opportunities for Watsons' chatbot enhancement.</p>
+
+            <div class="competitor-analysis">
+                <div class="competitor-card">
+                    <h4>🛍️ Lazada AI Assistant</h4>
+                    <ul>
+                        <li><strong>Strengths:</strong> Strong order tracking integration, multi-language support (EN/TH/MY), quick response times</li>
+                        <li><strong>Weaknesses:</strong> Limited understanding of complex queries, often redirects to human agents for order modifications</li>
+                        <li><strong>Key Insight:</strong> Southeast Asian market requires robust multi-language NLP capabilities</li>
+                    </ul>
+                </div>
+                
+                <div class="competitor-card">
+                    <h4>👗 Cider Customer Support Bot</h4>
+                    <ul>
+                        <li><strong>Strengths:</strong> Fashion-focused conversation flows, size and fit guidance, trendy conversational tone</li>
+                        <li><strong>Weaknesses:</strong> Struggles with return policy explanations, limited order cancellation automation</li>
+                        <li><strong>Key Insight:</strong> Industry-specific training data significantly improves relevance and user satisfaction</li>
+                    </ul>
+                </div>
+                
+                <div class="competitor-card">
+                    <h4>💄 Sephora Virtual Assistant</h4>
+                    <ul>
+                        <li><strong>Strengths:</strong> Excellent beauty product recommendations, personalized skincare advice, seamless booking integration</li>
+                        <li><strong>Weaknesses:</strong> Order management features are basic, limited proactive order status updates</li>
+                        <li><strong>Key Insight:</strong> Beauty brands benefit from advisory-style conversations rather than transactional interactions</li>
+                    </ul>
+                </div>
+                
+                <div class="competitor-card">
+                    <h4>📦 Amazon Customer Service Bot</h4>
+                    <ul>
+                        <li><strong>Strengths:</strong> Comprehensive order management, proactive delivery notifications, sophisticated intent recognition</li>
+                        <li><strong>Weaknesses:</strong> Can feel impersonal, overwhelming number of options, complex navigation for simple tasks</li>
+                        <li><strong>Key Insight:</strong> Advanced AI capabilities must be balanced with intuitive user experience design</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #f8f9fa, #ffffff); padding: 40px; border-radius: 20px; margin: 40px 0; border: 1px solid #e9ecef;">
+                <h3 style="color: #667eea; margin-bottom: 30px; font-size: 1.6rem;">Competitive Analysis Deep Dive</h3>
+                
+                <div class="research-grid">
+                    <div class="research-card">
+                        <h4>🎯 Order Management Capabilities</h4>
+                        <ul>
+                            <li><strong>Amazon:</strong> Gold standard - handles 80%+ of order inquiries autonomously</li>
+                            <li><strong>Lazada:</strong> Good tracking integration but limited modification capabilities</li>
+                            <li><strong>Cider & Sephora:</strong> Basic order lookup, heavy reliance on human handoff</li>
+                            <li><strong>Gap for Watsons:</strong> Opportunity to match Amazon's sophistication with beauty industry context</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-card">
+                        <h4>🗣️ Conversation Design Patterns</h4>
+                        <ul>
+                            <li><strong>Sephora:</strong> Advisory tone, asks follow-up questions, builds rapport</li>
+                            <li><strong>Cider:</strong> Casual, trendy language that matches brand personality</li>
+                            <li><strong>Amazon:</strong> Efficient, direct, task-focused interactions</li>
+                            <li><strong>Lazada:</strong> Formal but friendly, culturally appropriate for SEA markets</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-card">
+                        <h4>🔄 Escalation & Handoff Strategy</h4>
+                        <ul>
+                            <li><strong>Best Practice (Amazon):</strong> Context preservation, clear wait time expectations</li>
+                            <li><strong>Common Issue:</strong> Most platforms lose conversation context during handoff</li>
+                            <li><strong>Opportunity:</strong> Seamless escalation with full conversation history transfer</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="research-card" style="margin-top: 30px;">
+                <h4>🚀 Key Insights for Watsons AI Chatbot Strategy</h4>
+                <ul>
+                    <li><strong>Beauty-Health Context:</strong> Like Sephora, Watsons can leverage health and beauty expertise for advisory conversations beyond transactional support</li>
+                    <li><strong>Regional Adaptation:</strong> Lazada's multi-language success shows importance of localized AI training for SEA markets</li>
+                    <li><strong>Order Management Sophistication:</strong> Amazon's comprehensive automation sets the benchmark - Watsons should aim for similar capability coverage</li>
+                    <li><strong>Brand Personality Integration:</strong> Cider demonstrates how conversational tone can reinforce brand identity while maintaining functionality</li>
+                    <li><strong>Progressive Disclosure:</strong> All successful implementations avoid overwhelming users with too many options upfront</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Chatbot Flow Design Section -->
+        <div class="section fade-in">
+            <div class="section-header">
+                <div class="section-icon">🗺️</div>
+                <div>
+                    <h2 class="section-title">Chatbot Flow Design: Mapping the Conversation Journey</h2>
+                    <p class="section-subtitle">Creating intelligent conversation paths for order management</p>
+                </div>
+            </div>
+
+            <p style="font-size: 1.1rem; color: #555; margin-bottom: 40px; line-height: 1.7;">Based on research insights, I designed comprehensive conversation flows that guide users through order-related inquiries with minimal friction and maximum clarity.</p>
+
+            <div class="flowchart-container">
+                <h3 style="color: #667eea; margin-bottom: 30px;">Main Conversation Flow</h3>
+                
+                <div class="flowchart-step">
+                    <h4>🎯 Intent Recognition</h4>
+                    <p>AI identifies user query type:<br/>Order Status | Delivery | Cancellation | Return</p>
+                </div>
+                
+                <div class="flowchart-arrow">↓</div>
+                
+                <div class="flowchart-step">
+                    <h4>🔍 Order Lookup</h4>
+                    <p>Authenticate user and retrieve<br/>relevant order information</p>
+                </div>
+                
+                <div class="flowchart-arrow">↓</div>
+                
+                <div class="flowchart-step">
+                    <h4>💬 Contextual Response</h4>
+                    <p>Provide specific information<br/>with actionable next steps</p>
+                </div>
+                
+                <div class="flowchart-arrow">↓</div>
+                
+                <div class="flowchart-step">
+                    <h4>✅ Resolution or Escalation</h4>
+                    <p>Complete the request or<br/>seamlessly transfer to human agent</p>
+                </div>
+            </div>
+
+            <div class="research-grid">
+                <div class="research-card">
+                    <h4>🚚 Delivery Inquiry Flow</h4>
+                    <ul>
+                        <li><strong>Step 1:</strong> Order identification via order number or phone</li>
+                        <li><strong>Step 2:</strong> Real-time tracking status display</li>
+                        <li><strong>Step 3:</strong> Delivery window and contact information</li>
+                        <li><strong>Step 4:</strong> Options for delivery modifications if applicable</li>
+                    </ul>
+                </div>
+                
+                <div class="research-card">
+                    <h4>❌ Cancellation Flow</h4>
+                    <ul>
+                        <li><strong>Step 1:</strong> Order status check (can it be cancelled?)</li>
+                        <li><strong>Step 2:</strong> Clear explanation of cancellation policy</li>
+                        <li><strong>Step 3:</strong> Confirmation of cancellation request</li>
+                        <li><strong>Step 4:</strong> Refund timeline and method information</li>
+                    </ul>
+                </div>
+                
+                <div class="research-card">
+                    <h4>🔄 Return & Refund Flow</h4>
+                    <ul>
+                        <li><strong>Step 1:</strong> Return eligibility check based on product and timeline</li>
+                        <li><strong>Step 2:</strong> Return process explanation with visual guide</li>
+                        <li><strong>Step 3:</strong> Return shipping label generation</li>
+                        <li><strong>Step 4:</strong> Return tracking and refund status updates</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                [Detailed Conversation Flow Diagram - showing decision trees and response templates for each inquiry type]
+            </div>
+        </div>
+
+        <!-- Design Solution Section -->
+        <div class="section fade-in">
+            <div class="section-header">
+                <div class="section-icon">🎨</div>
+                <div>
+                    <h2 class="section-title">Design Solution: Intelligent Conversation Interface</h2>
+                    <p class="section-subtitle">Creating user-friendly chatbot interactions that feel natural and helpful</p>
+                </div>
+            </div>
+
+            <h3>Core Design Principles</h3>
+            <div class="design-principles">
+                <div class="principle">
+                    <div class="principle-number">1</div>
+                    <h4>Conversational, Not Robotic</h4>
+                    <p>Natural language that matches Watsons' friendly brand tone</p>
+                </div>
+                <div class="principle">
+                    <div class="principle-number">2</div>
+                    <h4>Visual Information Display</h4>
+                    <p>Order cards, tracking visuals, and clear status indicators</p>
+                </div>
+                <div class="principle">
+                    <div class="principle-number">3</div>
+                    <h4>Progressive Disclosure</h4>
+                    <p>Show relevant information step-by-step, not all at once</p>
+                </div>
+                <div class="principle">
+                    <div class="principle-number">4</div>
+                    <h4>Seamless Escalation</h4>
+                    <p>Smooth handoff to human agents when needed</p>
+                </div>
+            </div>
+
+            <div class="research-grid">
+                <div class="research-card">
+                    <h4>🎯 Smart Intent Recognition</h4>
+                    <ul>
+                        <li><strong>Natural Language Processing:</strong> Understands various ways customers ask about orders</li>
+                        <li><strong>Context Awareness:</strong> Remembers previous conversation context</li>
+                        <li><strong>Multi-language Support:</strong> Handles English, Chinese, Thai, and Malay</li>
+                        <li><strong>Typo Tolerance:</strong> Recognizes common misspellings and variations</li>
+                    </ul>
+                </div>
+                
+                <div class="research-card">
+                    <h4>📱 Visual Order Management</h4>
+                    <ul>
+                        <li><strong>Order Cards:</strong> Visual representation of order details</li>
+                        <li><strong>Tracking Timeline:</strong> Clear progress indicators for delivery status</li>
+                        <li><strong>Product Images:</strong> Visual confirmation of ordered items</li>
+                        <li><strong>Action Buttons:</strong> Quick access to common actions (track, cancel, return)</li>
+                    </ul>
+                </div>
+                
+                <div class="research-card">
+                    <h4>🤝 Human Handoff Strategy</h4>
+                    <ul>
+                        <li><strong>Context Transfer:</strong> Full conversation history passed to human agents</li>
+                        <li><strong>Escalation Triggers:</strong> Automatic detection of complex issues</li>
+                        <li><strong>Wait Time Transparency:</strong> Clear expectations about response times</li>
+                        <li><strong>Callback Options:</strong> Alternative to waiting in chat queue</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                [Chatbot Interface Mockups - showing conversation flows, visual order cards, and escalation screens]
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="section fade-in">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <div>
+                    <h2 class="section-title">Expected Impact & Success Metrics</h2>
+                    <p class="section-subtitle">Measuring the effectiveness of AI-powered customer support</p>
+                </div>
+            </div>
+
+            <h3>Target Improvements</h3>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-value">65%</div>
+                    <div class="result-label">🎯 Chatbot Resolution Rate</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">40%</div>
+                    <div class="result-label">⚡ Faster Response Time</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">24/7</div>
+                    <div class="result-label">🕒 Availability</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">30%</div>
+                    <div class="result-label">📞 Reduced Agent Workload</div>
+                </div>
+            </div>
+
+            <h3>Business Benefits</h3>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h4>💰 Cost Efficiency</h4>
+                    <ul>
+                        <li><strong>Reduced Support Costs:</strong> Fewer human agents needed for routine inquiries</li>
+                        <li><strong>Scalable Solution:</strong> Handle increased volume without proportional cost increase</li>
+                        <li><strong>24/7 Operations:</strong> No additional staffing costs for extended hours</li>
+                    </ul>
+                </div>
+                
+                <div class="research-card">
+                    <h4>😊 Customer Satisfaction</h4>
+                    <ul>
+                        <li><strong>Instant Responses:</strong> No waiting in queue for basic order questions</li>
+                        <li><strong>Consistent Service:</strong> Same quality of service regardless of time or volume</li>
+                        <li><strong>Self-Service Empowerment:</strong> Customers can resolve issues independently</li>
+                    </ul>
+                </div>
+                
+                <div class="research-card">
+                    <h4>📈 Operational Excellence</h4>
+                    <ul>
+                        <li><strong>Agent Focus:</strong> Human agents can focus on complex, high-value interactions</li>
+                        <li><strong>Data Insights:</strong> Better understanding of customer pain points and trends</li>
+                        <li><strong>Continuous Improvement:</strong> AI learns and improves from every interaction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Learnings Section -->
+        <div class="section fade-in">
+            <div class="section-header">
+                <div class="section-icon">🧠</div>
+                <div>
+                    <h2 class="section-title">Key Learnings & Design Insights</h2>
+                    <p class="section-subtitle">Critical discoveries from designing AI-powered customer support</p>
+                </div>
+            </div>
+
+            <ul class="learnings-list">
+                <li><strong>Context is King:</strong> Customers expect the chatbot to understand their order history and previous interactions, not start from scratch each time</li>
+                <li><strong>Visual Beats Text:</strong> Showing order information visually (cards, timelines, images) is far more effective than text-only responses</li>
+                <li><strong>Proactive Communication:</strong> The best chatbot experiences anticipate user needs and offer relevant actions before being asked</li>
+                <li><strong>Graceful Failure:</strong> When AI can't help, the handoff to human agents must be seamless with full context transfer</li>
+                <li><strong>Cultural Sensitivity:</strong> Different markets have different communication styles and expectations for customer service</li>
+                <li><strong>Progressive Disclosure:</strong> Showing all information at once overwhelms users; revealing details step-by-step works better</li>
+                <li><strong>Trust Through Transparency:</strong> Users need to understand what the chatbot can and cannot do to set proper expectations</li>
+            </ul>
+
+            <div class="solution-highlight">
+                <h3>Next Steps & Future Enhancements</h3>
+                <ul>
+                    <li><strong>Voice Integration:</strong> Adding voice input/output for hands-free interactions</li>
+                    <li><strong>Predictive Support:</strong> Proactively reaching out about potential delivery issues</li>
+                    <li><strong>Personalization Engine:</strong> Learning individual customer preferences and communication styles</li>
+                    <li><strong>Integration Expansion:</strong> Connecting with more backend systems for comprehensive support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.2s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add smooth scrolling
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
