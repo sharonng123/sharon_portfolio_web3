@@ -210,18 +210,18 @@ body::after {
 
 .roadmap-timeline {
   position: relative;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: var(--space-6) 0;
+  padding: var(--space-2) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-2);
 }
 
 .roadmap-timeline::before {
   content: '';
   position: absolute;
-  left: 60px;
+  left: 50%;
   top: 0;
   bottom: 0;
   width: 3px;
@@ -233,39 +233,38 @@ body::after {
     transparent 100%);
   border-radius: 2px;
   z-index: 0;
+  transform: translateX(-50%);
 }
 
 .roadmap-item {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: var(--space-4);
+  align-items: flex-start;
+  gap: var(--space-3);
   z-index: 2;
   opacity: 1;
-  transition: all 0.3s ease;
-  padding: var(--space-3) 0;
-}
-
-.roadmap-item:nth-child(even) {
-  flex-direction: row-reverse;
+  transition: all 0.4s ease;
+  padding: var(--space-1) 0;
 }
 
 .roadmap-item:nth-child(odd) {
   flex-direction: row;
+  justify-content: flex-start;
 }
 
-.roadmap-content {
-  text-align: left;
+.roadmap-item:nth-child(odd) .roadmap-card {
+  margin-left: var(--space-2);
 }
 
-@keyframes slideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.roadmap-item:nth-child(even) {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
 }
 
-/* Simple vertical layout for all items */
+.roadmap-item:nth-child(even) .roadmap-card {
+  margin-right: var(--space-2);
+}
+
 
 .roadmap-year {
   background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink));
@@ -285,24 +284,6 @@ body::after {
   border: 1px solid rgba(255,255,255,0.4);
 }
 
-.journey-decoration {
-  display: none;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-
-
 .roadmap-card {
   background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%);
   backdrop-filter: blur(16px);
@@ -311,17 +292,17 @@ body::after {
   padding: var(--space-4);
   position: relative;
   flex: 1;
-  max-width: 500px;
+  max-width: 420px;
+  min-height: 100px;
   z-index: 2;
   transition: all 0.3s ease;
+  margin-top: 0;
 }
 
 .roadmap-card:hover {
   border-color: rgba(255,255,255,0.3);
   background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%);
 }
-
-
 
 .roadmap-content h4 {
   color: #ffffff;
@@ -354,43 +335,33 @@ body::after {
   box-shadow: 
     0 4px 15px rgba(0,0,0,0.2),
     inset 0 1px 0 rgba(255,255,255,0.3);
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 3;
   border: 5px solid rgba(255, 255, 255, 0.6);
   flex-shrink: 0;
   transition: all 0.4s ease;
-
 }
-
-/* Removed connecting lines for cleaner design */
-
-
-
-/* Removed icon hover effects - only cards should have hover */
 
 /* Responsive roadmap */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .roadmap-timeline::before {
-    background-size: 100% 100%;
-    opacity: 0.9;
-  }
-  
-  .roadmap-card {
-    max-width: 400px;
-  }
-}
-
 @media (max-width: 768px) {
   .roadmap-timeline::before {
     left: 30px;
+    transform: none;
   }
   
   .roadmap-item {
     gap: var(--space-3);
     padding: var(--space-2) 0;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
   }
   
-  .roadmap-card {
+  .roadmap-item:nth-child(odd) .roadmap-card,
+  .roadmap-item:nth-child(even) .roadmap-card {
+    margin-left: var(--space-3);
+    margin-right: 0;
     max-width: 100%;
     padding: var(--space-3);
   }
@@ -408,11 +379,9 @@ body::after {
     width: 50px;
     height: 50px;
     font-size: 18px;
-  }
-  
-  .roadmap-year {
-    font-size: 10px;
-    padding: 3px 6px;
+    position: relative;
+    left: auto;
+    transform: none;
   }
 }
 
