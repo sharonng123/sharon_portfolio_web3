@@ -127,23 +127,192 @@
       const modalImg = document.getElementById('fullscreenImg');
       const closeBtn = document.querySelector('.fullscreen-close');
       
-      // Generate gallery items for MTR graphics (1-47)
-      for (let i = 1; i <= 47; i++) {
+      // Generate gallery items for MTR graphics (1-54)
+      for (let i = 1; i <= 54; i++) {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
         
-        galleryItem.innerHTML = `
-          <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
-          <div class="gallery-overlay">Click to view full size</div>
-        `;
+        // Special handling for images with Instagram links
+        if (i === 1) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/CoejLpKvzGA/" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 2) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/Cmvs_pBvBQo/?img_index=4" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 3) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/CxZlud1yMgH/" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 4) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/CqSSYDeS_7Q/" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 6) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/TelfordPlaza/posts/pfbid0343nhejSKD1owZr3aGNWJ44BqBdEAVz9XAPFW1L1bLe6Rm3rjTrp1CAjkZqfmeZCVl" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 7) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/TelfordPlaza/posts/pfbid023FGQ3cpVA1a8Zv2kntKpoxE2wkRRkaWhUHjpXzxHHakbvTSyhQLZxF1g8XCWnhLpl" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 8) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/Cs8aWnpyGCf/" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 9) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/Cpha00NPBV1/" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 10) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/CwSHP1DprTo/" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 11) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/ClWAJNMAjqX/" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 12) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/TelfordPlaza/videos/186478924413494/" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 13) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/CnWUjukyxU7/?img_index=1" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 14) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/Ci1MuosJwfX/" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 15) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/TelfordPlaza/posts/pfbid02ZdvBwut4t6PmRrw5ob3NfDT4SHGdJH1F34MRVsJcjBrph3mqPeA86tanz152nWeJl" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 16) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/TelfordPlaza/posts/pfbid0AEYd6wYHmS1ZvrWTcYP9f46r2w3s3U3BeWK2Hyb8gQFe3bhAdWphzWvBnfG1tcz9l" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 17) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/TelfordPlaza/posts/pfbid02ukPcFNZkxPBahqUHtDE3X2SqUpcGAajY3P1FXe7ZHNBviLtokxeC4b51VTig1Cn8l" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 18) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/MaritimeSquare/posts/pfbid0259MEUfxD7XjHGDNMTfgmQv2us1CidvYQMjmvkpN7kXgQrnaFxp86dbzPTXLh8LqLl" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 19) {
+          galleryItem.innerHTML = `
+            <a href="https://www.instagram.com/p/CjZV9ysJIzt/" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Instagram</div>
+            </a>
+          `;
+        } else if (i === 21) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/TelfordPlaza/posts/pfbid02Fi8Nq5Qk2vmLuanpxkJndMBw9YepPyp672D6VpFYtNsn83yNrdCCP4qQtmRsJuzLl" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 36) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/MaritimeSquare/posts/pfbid0bECcT9tgwmu5wG4b67BuWwuK4V76yViHXuM4xKuPzjYmpoUUfoBp5MfxHQGfN5jql" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 41) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/TelfordPlaza/posts/pfbid02JZaeLtCCg5kgQhFvfV4Ann2MxE5kSfn2tja2nvKJmfmJVgzrCXfYkLuWsx2CWhUZl" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 42) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/TelfordPlaza/posts/pfbid022DxukLMmDHhLZdjkpjxx7HnsXftEN3LUMrD9YkA1pgbGiwxmygpHy4Hmx6A78LLWl" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else if (i === 54) {
+          galleryItem.innerHTML = `
+            <a href="https://www.facebook.com/TelfordPlaza/posts/pfbid02LMYpD4LkKgDe3a3VeYVqxny8bwGjCu2PSLeZUn49x4EzAThL3cqPh46j2esKE9sCl" target="_blank" rel="noopener noreferrer" class="gallery-link">
+              <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+              <div class="gallery-overlay">Click to view on Facebook</div>
+            </a>
+          `;
+        } else {
+          galleryItem.innerHTML = `
+            <img src="../assets/images/graphic-design/mtr-graphics/${i}.png" alt="MTR Social Media Campaign ${i}" class="gallery-image" />
+            <div class="gallery-overlay">Click to view full size</div>
+          `;
+        }
         
         gallery.appendChild(galleryItem);
       }
 
-      // Add click event to all gallery items
+      // Add click event to all gallery items (except those with links)
       const galleryItems = document.querySelectorAll('.gallery-item');
       galleryItems.forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function(e) {
+          // Don't open modal if clicking on a linked image
+          if (this.querySelector('.gallery-link')) {
+            return; // Let the link handle the click
+          }
+          
           const img = this.querySelector('.gallery-image');
           modal.classList.add('active');
           modalImg.src = img.src;
